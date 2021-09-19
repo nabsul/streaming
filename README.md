@@ -1,6 +1,6 @@
 # Minimal Streaming REST API Examples in NodeJS and C#
 
-This repo demos the basics of how to efficiently process large amounts of data without
+This repo demos the basics of how to efficiently process large amounts of data without loading everything into memory all at once.
 
 ## Prerequisites
 
