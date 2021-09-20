@@ -2,6 +2,7 @@ obj
 bin
 Properties
 .vs
+.idea
 data.json
 *.user
 node_modules
