@@ -4,3 +4,4 @@ Properties
 .vs
 data.json
 *.user
+node_modules
