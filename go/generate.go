@@ -25,15 +25,25 @@ func main() {
 
 	fmt.Println("Writing data...")
 	writer := bufio.NewWriter(file)
+
+	write(writer, "[")
+
+	prefix := "\n\t"
 	date := incrementDate(startDate)
 	for date.Before(endDate) {
-		_, err := writer.WriteString(date.String() + "\n")
-		if err != nil {
-			log.Fatalf("Got error while writing to a file. Err: %s", err.Error())
-		}
+		write(writer, prefix + date.String() + "\n")
 		date = incrementDate(date)
+		prefix = ",\n\t"
 	}
 
+	write(writer, "\n]\n")
 	writer.Flush()
 	fmt.Println("Done.")
+}
+
+func write(writer *bufio.Writer, str string) {
+	_, err := writer.WriteString(str)
+	if err != nil {
+		log.Fatalf("Failed to write to file: %s", err.Error())
+	}
 }
