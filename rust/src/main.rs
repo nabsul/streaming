@@ -1,16 +1,14 @@
 use std::env;
 
 mod generate;
+mod server;
 
-fn main() {
+fn main() -> std::io::Result<()> {
     let args: Vec<String> = env::args().collect();
     if args.len() > 1 && args[1] == "generate" {
-        return generate::generate();
+        generate::generate();
+        return Ok(());
     }
 
-    server();
-}
-
-fn server() {
-    println!("Runnning the server")
+    return server::serve();
 }

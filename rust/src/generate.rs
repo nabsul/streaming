@@ -13,6 +13,23 @@ struct Entry {
   points: u32,
 }
 
+struct EntryStream {
+    file: File,
+}
+
+impl Iterator for EntryStream {
+    type Item = Entry;
+
+    fn next(&mut self) -> Option<Entry> {
+        None
+    }
+}
+
+pub fn get_entries() -> EntryStream {
+    let f = File::open("data.json").unwrap();
+    return EntryStream { file: f };
+}
+
 pub fn generate() {
     println!("Getting ready to generate file...");
     let mut output = File::create("data.json").unwrap();
